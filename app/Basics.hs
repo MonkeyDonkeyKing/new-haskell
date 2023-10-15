@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-missing-export-lists #-}
 module Basics where
 
 quadrat :: Num a => a -> a

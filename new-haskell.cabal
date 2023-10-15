@@ -40,7 +40,7 @@ library
 executable new-haskell-exe
   main-is: Main.hs
   other-modules:
-      Aufgabe
+      Aufgabe1
       Basics
       Paths_new_haskell
   autogen-modules:
