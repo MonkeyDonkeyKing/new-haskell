@@ -6,11 +6,19 @@ module Aufgabe3 where
 -- für stets gleiche Eingaben auch gleiche Ergebnisse liefern. Diese
 -- Eigenschaft heißt extensionale Gleichheit der Funktion.
 
+-- Funktionen haben Extensionale Gleichheit - Eingabe und Ausgabe ist gleichc
+-- Aber keine Strukturelle Gleichheit, da Haskell die implementierung der Funktion nicht verlgeichen kann
+-- Man könnte eigene Eq Methode für Funktion implementieren.
+
 -- Aufgabe 2
 -- Verwenden Sie Funktionen aus Data.List, um die Funktion
 
--- > halbieren :: [a] -> ([a], [a])
--- > halbieren = undefined
+halbieren :: [a] -> ([a], [a])
+halbieren xs 
+        | even (length xs) = splitAt (length xs `div` 2) xs
+        | otherwise = splitAt ((length xs + 1) `div` 2) xs
+-- ANDERS:
+-- halbieren xs = splitAt(length xs `ceiling` 2) xs
 
 -- zu schreiben, die eine Liste gerader Länge in der Mitte teilt. Finden sie
 -- für ungerade Länge eine sinnvolle Spezifikation.
