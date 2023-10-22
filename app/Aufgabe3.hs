@@ -13,12 +13,12 @@ module Aufgabe3 where
 -- Aufgabe 2
 -- Verwenden Sie Funktionen aus Data.List, um die Funktion
 
-halbieren :: [a] -> ([a], [a])
-halbieren xs 
-        | even (length xs) = splitAt (length xs `div` 2) xs
-        | otherwise = splitAt ((length xs + 1) `div` 2) xs
+-- halbieren :: [a] -> ([a], [a])
+-- halbieren xs 
+--         | even (length xs) = splitAt (length xs `div` 2) xs
+--         | otherwise = splitAt ((length xs + 1) `div` 2) xs
 -- ANDERS:
--- halbieren xs = splitAt(length xs `ceiling` 2) xs
+-- halbieren' xs = splitAt (ceiling (fromIntegral (length xs) / 2)) xs
 
 -- zu schreiben, die eine Liste gerader Länge in der Mitte teilt. Finden sie
 -- für ungerade Länge eine sinnvolle Spezifikation.
@@ -26,14 +26,22 @@ halbieren xs
 -- Schreiben Sie nun eine Funktion, die zwei sortierte Listen zu einer sortierten
 -- Liste verschmilzt.
 
--- > merge :: Ord a => ([a],[a]) -> [a]
--- > merge = undefined
+-- merge :: Ord a => ([a],[a]) -> [a]
+-- merge ([],ys) = ys
+-- merge (xs,[]) = xs
+-- merge (x:xs,y:ys)
+--     | x <= y = x : merge (xs, y:ys)
+--     | otherwise = y: merge (x:xs, ys)
 
 -- Schreiben Sie nun unter Verwendung der beiden Funktionen halbieren und merge
 -- eine Funktion mergesort.
 
--- > mergesort :: Ord a => [a] -> [a]
--- > mergesort = undefined
+-- mergesort :: Ord a => [a] -> [a]
+-- mergesort []  = []
+-- mergesort [x] = [x]
+-- mergesort xs  = merge (mergesort left, mergesort right)
+--   where
+--     (left, right) = halbieren xs
 
 
 -- Aufgabe 3
@@ -42,6 +50,22 @@ halbieren xs
 -- head und tail,
 -- dem Listenindexoperator !!,
 -- Patternmatch.
+
+-- third :: [a] -> a
+-- third [] = error "Die Liste hat weniger als drei Elemente"
+-- third xs
+--      | length xs >= 3 = head ( tail ( tail xs))
+--      | otherwise = error "Die Liste hat weniger als drei Elemente"
+
+-- third :: [a] -> a
+-- third [] = error "Die Liste hat weniger als drei Elemente"
+-- third xs
+--      | length xs >= 3 = xs !! 2
+--      | otherwise = error "Die Liste hat weniger als drei Elemente"
+
+-- third :: [a] -> a
+-- third (_:_:x:_) = x
+-- third _ = error "Die Liste hat weniger als drei Elemente."
 
 -- Aufgabe 4
 
@@ -53,12 +77,50 @@ halbieren xs
 -- mit guarded equations
 -- mit pattern matching
 
+-- bedingten Ausdruck
+-- safeTail :: [a] -> [a]
+-- safeTail xs = if length xs > 0 then tail xs else []
+
+-- safeTail :: [a] -> [a]
+-- safeTail xs = if not (null xs) then tail xs else []
+
+-- safeTail :: [a] -> [a]
+-- safeTail xs = if (null xs) then [] else tail xs
+
+--  guarded equations
+-- safeTail' :: [a] -> [a]
+-- safeTail' xs 
+--            | length xs > 0 = tail xs
+--            | otherwise = []
+
+-- pattern matching
+-- safeTail'' :: [a] -> [a]
+-- safeTail'' [] = []
+-- safeTail'' (x:xs) = xs
+
 -- Aufgabe 5
 -- Geben Sie wie in der Vorlesung vier verschiedene Wege an, um die Disjunktion
 -- (oder) auf Bool zu implementieren.
 
+-- orPattern :: Bool -> Bool -> Bool
+-- orPattern True _  = True
+-- orPattern _ True  = True
+-- orPattern _ _     = False
+
+-- orGuard :: Bool -> Bool -> Bool
+-- orGuard a b
+--     | a == True  = True
+--     | b == True  = True
+--     | otherwise  = False
+
+-- orOperator :: Bool -> Bool -> Bool
+-- orOperator a b = a || b
+
+-- orConditional :: Bool -> Bool -> Bool
+-- orConditional a b = if a == True then True else if b == True then True else False
+
 -- Aufgabe 6
--- Betrachten Sie den folgenden Datentyp f"ur eine dreiwertige Logik:
+-- Betrachten Sie den folgenden Datentyp für eine dreiwertige Logik:
 
 -- > data Drei = Nein | Jein | Ja
 -- >   deriving (Show, Eq)
