@@ -1,10 +1,10 @@
 module Main (main) where
 
 import Lib ()
-import Aufgabe3 (safeTail'')
+import Aufgabe3 ()
 
 main :: IO ()
 main = do
     putStrLn "Aufgabe 3"
-    let result = safeTail'' [1, 7, 5]
-    print result
+    -- let result = safeTail'' [1, 7, 5]
+    -- print result

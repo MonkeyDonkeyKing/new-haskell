@@ -129,25 +129,56 @@ module Aufgabe3 where
 -- für die Funktionen not, and und or. Überlegen Sie sich, was der Wert
 -- Jein bedeutet und definieren Sie die Funktionen dann entsprechend.
 
--- > tnot :: Drei -> Drei
--- > tnot = undefined
+-- tnot :: Drei -> Drei
+-- tnot Nein = Ja
+-- tnot Jein = Jein
+-- tnot Ja   = Nein
 
--- > tand :: Drei -> Drei -> Drei
--- > tand = undefined
+-- tand :: Drei -> Drei -> Drei
+-- tand Nein Nein = Nein
+-- tand Nein Jein = Nein
+-- tand Nein Ja   = Nein
+-- tand Jein Nein = Nein
+-- tand Jein Jein = Jein
+-- tand Jein Ja   = Jein
+-- tand Ja Nein   = Nein
+-- tand Ja Jein   = Jein
+-- tand Ja Ja     = Ja
 
--- > tor :: Drei -> Drei -> Drei
--- > tor = undefined
+-- tor :: Drei -> Drei -> Drei
+-- tor Nein Nein = Nein
+-- tor Nein Jein = Jein
+-- tor Nein Ja   = Ja
+-- tor Jein Nein = Jein
+-- tor Jein Jein = Jein
+-- tor Jein Ja   = Jein
+-- tor Ja   Nein = Ja
+-- tor Ja   Jein = Jein
+-- tor Ja   Ja   = Ja
+
 
 -- Betrachten Sie die Wahrheitstabelle und finden Sie eine kompaktere Definition
 -- mit Patterns für and:
 
--- > tand' :: Drei -> Drei -> Drei
--- > tand' = undefined
+-- tand' :: Drei -> Drei -> Drei
+-- tand' Nein _     = Nein
+-- tand' _    Nein  = Nein
+-- tand' Jein Ja    = Jein
+-- tand' Ja   Jain  = Jein
+-- tand' Jain Jain  = Jein
+-- tand' _     _    = Ja
 
 -- Finden Sie eine kompaktere Definition für or, indem Sie Guards verwenden.
 
--- > tor' :: Drei -> Drei -> Drei
--- > tor' = undefined
+-- tor' :: Drei -> Drei -> Drei
+-- tor' a b 
+--     | a == Nein && b == Nein = Nein
+--     | a == Ja && b == Ja = Ja
+--     | a == Ja && b == Nein = Ja
+--     | a == Nein && b == Ja = Ja
+--     | otherwise = Jein
+
+
 
 
 
