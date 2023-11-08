@@ -33,8 +33,6 @@ module Aufgabe5 where
 -- > konkat (x:xs) = x ++ konkat xs
 
 -- Anmerkung: xs steht in diesem fall für alle anderen Listen der Liste
-
-
 -- \end{aufgabe}
 
 -- \begin{aufgabe}
