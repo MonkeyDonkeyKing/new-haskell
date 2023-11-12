@@ -54,7 +54,7 @@ module Aufgabe6 where
 -- > mycurry :: ((a,b) -> c) -> a -> b -> c
 -- > mycurry f x y = f (x, y) 
 
--- > myuncurry :: a -> b -> c -> ((a,b) -> c)
+-- > myuncurry :: (a -> b -> c) -> (a,b) -> c
 -- > myuncurry f (x, y) = f x y
 
 -- \end{aufgabe}
