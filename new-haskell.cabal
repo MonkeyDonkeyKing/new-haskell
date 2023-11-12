@@ -45,6 +45,7 @@ executable new-haskell-exe
       Aufgabe3
       Aufgabe4
       Aufgabe5
+      Aufgabe6
       Basics
       Paths_new_haskell
   autogen-modules:
