@@ -15,7 +15,7 @@ module Aufgabe10 where
 -- fmap :: Functor f => (a -> b) -> f a -> f b
 
 -- > instance Funktor ((->) a) where
--- >   -- fmap :: (a -> b) -> (a -> c) -> (b -> c)
+-- >   fmap' :: (a -> b) -> (a -> c) -> (b -> c)
 -- >   fmap' f g = f . g
 
 -- \end{aufgabe}
@@ -32,7 +32,7 @@ module Aufgabe10 where
 -- >   rein x = \_ -> x
 
 -- >   -- (<**>) :: (a -> (b -> c)) -> (a -> b) -> (a -> c)
--- >  f <**> g = \x -> f x (g x)
+-- >  f <**> g = \x -> (f x) (g x)
 
 -- \end{aufgabe}
 
@@ -55,13 +55,13 @@ module Aufgabe10 where
 -- Geben Sie eine Functor Instanz an:
 
 -- > instance Functor ZipList where
--- >   -- fmap :: (a -> b) -> Ziplist a -> Ziplist b
+-- >   fmap :: (a -> b) -> Ziplist a -> Ziplist b
 -- >   fmap g (Z xs) = Z (fmap g xs)
 
 -- Geben Sie nun eine Applicative Instanz an:
 
 -- > instance Applicative ZipList where
--- >   -- pure :: a -> Ziplist a
+-- >   pure :: a -> Ziplist a
 -- >   pure x = Z (repeat x)
 -- >   -- (<*>) :: Ziplist (a -> b) -> Ziplist a -> Ziplist b
 -- >   (Z gs) <*> (Z xs) = Z (zipWith ($) gs xs)
