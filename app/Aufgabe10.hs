@@ -11,9 +11,12 @@ module Aufgabe10 where
 -- (a ->) an. Schreiben Sie dazu zuerst den Typ der Funktion fmap auf.
 -- Welche Funktion aus der Standard-Bibliothek hat diesen Typ?
 
+-- Allgemein:
+-- fmap :: Functor f => (a -> b) -> f a -> f b
+
 -- > instance Funktor ((->) a) where
--- >   -- fmap ::
--- >   fmap' = undefined
+-- >   -- fmap :: (a -> b) -> (a -> c) -> (b -> c)
+-- >   fmap' f g = f . g
 
 -- \end{aufgabe}
 
@@ -21,12 +24,15 @@ module Aufgabe10 where
 -- Geben Sie eine Applicative Instanz der partiell angewendeten Funktion
 -- (a ->) an.
 
+-- rein :: Applicative f => a -> f a
+-- (<**>) :: Applicative f => f (a -> b) -> f a -> f b
 
 -- > instance Applikativ ((->) a) where
--- >   -- rein ::
--- >   rein = undefined
--- >   -- (<**>) ::
--- >   x <**> y = undefined
+-- >   -- rein :: a -> (a -> b)
+-- >   rein x = \_ -> x
+
+-- >   -- (<**>) :: (a -> (b -> c)) -> (a -> b) -> (a -> c)
+-- >  f <**> g = \x -> f x (g x)
 
 -- \end{aufgabe}
 
@@ -49,16 +55,16 @@ module Aufgabe10 where
 -- Geben Sie eine Functor Instanz an:
 
 -- > instance Functor ZipList where
--- >   -- fmap ::
--- >   fmap g (Z xs) = undefined
+-- >   -- fmap :: (a -> b) -> Ziplist a -> Ziplist b
+-- >   fmap g (Z xs) = Z (fmap g xs)
 
 -- Geben Sie nun eine Applicative Instanz an:
 
 -- > instance Applicative ZipList where
--- >   -- pure ::
--- >   pure = undefined
--- >   -- (<*>) ::
--- >   (Z gs) <*> (Z xs) = undefined
+-- >   -- pure :: a -> Ziplist a
+-- >   pure x = Z (repeat x)
+-- >   -- (<*>) :: Ziplist (a -> b) -> Ziplist a -> Ziplist b
+-- >   (Z gs) <*> (Z xs) = Z (zipWith ($) gs xs)
 
 -- \end{aufgabe}
 
