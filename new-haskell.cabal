@@ -41,11 +41,15 @@ executable new-haskell-exe
   main-is: Main.hs
   other-modules:
       Aufgabe1
+      Aufgabe10
+      Aufgabe11
       Aufgabe2
       Aufgabe3
       Aufgabe4
       Aufgabe5
       Aufgabe6
+      Aufgabe8
+      Aufgabe9
       Basics
       Paths_new_haskell
   autogen-modules:

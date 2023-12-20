@@ -15,7 +15,7 @@ module Aufgabe10 where
 -- fmap :: Functor f => (a -> b) -> f a -> f b
 
 -- > instance Funktor ((->) a) where
--- >   fmap' :: (a -> b) -> (a -> c) -> (b -> c)
+-- >   fmap' :: (a -> b) -> (b -> c) -> (a -> c)
 -- >   fmap' f g = f . g
 
 -- \end{aufgabe}

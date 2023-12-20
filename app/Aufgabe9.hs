@@ -1,4 +1,4 @@
-module Aufgabe 9 where
+module Aufgabe9 where
 
 --   Erweitern Sie den Tautologie Checker um die logischen
 -- Operationen Disjunktion (oder, \/) und Aequivalenz (<->).
